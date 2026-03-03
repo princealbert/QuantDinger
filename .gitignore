@@ -430,3 +430,4 @@
 /quantdinger_vue/src/locales/lang/zh-CN.js
 /quantdinger_vue/src/locales/lang/zh-TW.js
 /quantdinger_vue/.browserslistrc
+.env
