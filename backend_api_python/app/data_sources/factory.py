@@ -67,6 +67,9 @@ class DataSourceFactory:
         elif market == 'Futures':
             from app.data_sources.futures import FuturesDataSource
             return FuturesDataSource()
+        elif market == 'Tushare':
+            from app.data_sources.tushare import TushareDataSource
+            return TushareDataSource()
         else:
             raise ValueError(f"不支持的市场类型: {market}")
     

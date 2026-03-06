@@ -12,7 +12,7 @@
  *
  */
 
-export const PYTHON_API_BASE_URL = process.env.VUE_APP_PYTHON_API_BASE_URL || 'http://localhost:5000'
+export const PYTHON_API_BASE_URL = process.env.VUE_APP_PYTHON_API_BASE_URL || 'http://localhost:5001'
 
 export default {
   navTheme: 'light', // theme for nav menu

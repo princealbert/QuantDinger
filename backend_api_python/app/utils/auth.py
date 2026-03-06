@@ -83,16 +83,20 @@ def _verify_token_version(user_id: int, token_version: int) -> bool:
     """
     验证 token 版本是否与数据库中存储的版本匹配。
     用于实现单一客户端登录（踢出重复登录）。
-    
+
     Args:
         user_id: 用户ID
         token_version: Token中的版本号
-    
+
     Returns:
         True if version matches, False otherwise
     """
     try:
-        from app.utils.db import get_db_connection
+        from app.utils.db import get_db_connection, is_postgres_available
+        # 如果数据库不可用（本地开发模式），跳过 token 版本验证
+        if not is_postgres_available():
+            logger.debug("PostgreSQL not available, skipping token version verification")
+            return True
         with get_db_connection() as db:
             cur = db.cursor()
             cur.execute(
@@ -101,10 +105,10 @@ def _verify_token_version(user_id: int, token_version: int) -> bool:
             )
             row = cur.fetchone()
             cur.close()
-            
+
             if not row:
                 return False
-            
+
             db_token_version = row.get('token_version') or 1
             return int(token_version) == int(db_token_version)
     except Exception as e:

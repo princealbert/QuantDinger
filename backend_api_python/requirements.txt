@@ -26,3 +26,5 @@ ib_insync>=0.9.86
 # tavily-python>=0.3.0
 # SerpAPI - Google/Bing search scraper (free 100 requests/month)
 # google-search-results>=2.4.0
+# Tushare data source (optional, for Chinese A-share/HK stock data)
+tushare>=1.4.0

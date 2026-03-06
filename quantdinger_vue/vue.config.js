@@ -126,7 +126,7 @@ const vueConfig = {
     port: 8000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'http://localhost:5001',
         ws: true,
         changeOrigin: true
       }
